@@ -1,81 +1,111 @@
-﻿
-#include "glut.h"
+﻿#include "glut.h"
 #include <ctime>
 #include <cmath>
 #include <iostream>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
 
 class Clock {
 public:
-    void drawClock();
-    void display();
-    static void update(int value); // Sử dụng static để phù hợp với cú pháp của glutTimerFunc
-    void init();
+    Clock();
+    void drawClock(float x, float y, float z, float size);
+    void updateClock(int value);
+
+private:
+    float hour;
+    float minute;
+    float second;
+    void drawHourHand(float x, float y, float z, float length);
+    void drawMinuteHand(float x, float y, float z, float length);
+    void drawSecondHand(float x, float y, float z, float length);
+    void drawCircle(float radius);
 };
 
-void Clock::drawClock() {
-    time_t rawtime;
-    struct tm timeinfo;
-    time(&rawtime);
-    localtime_s(&timeinfo, &rawtime);
-    float seconds = timeinfo.tm_sec;
-    float minutes = timeinfo.tm_min;
-    float hours = timeinfo.tm_hour;
+Clock::Clock() {
+    // Khởi tạo giờ, phút và giây ban đầu
+    time_t now;
+    struct tm currentTime;
+    time(&now);
+    localtime_s(&currentTime, &now);
+    hour = currentTime.tm_hour % 12;
+    minute = currentTime.tm_min;
+    second = currentTime.tm_sec;
+}
 
-    // Chuyển đổi giờ về định dạng 12 giờ
-    hours = hours > 12 ? hours - 12 : hours;
+void Clock::drawClock(float x, float y, float z, float size) {
+    glPushMatrix();
+    glTranslatef(x, y + 0.5f, z); // Điều chỉnh vị trí trên trục y để đặt đồng hồ lên cao một chút
+    glColor3f(1.0f, 1.0f, 1.0f);
+    drawCircle(size); // Vẽ mặt đồng hồ
 
-    // Clear screen và matrix
-    glClear(GL_COLOR_BUFFER_BIT);
-    glLoadIdentity();
+    // Vẽ kim giờ, phút, giây với màu tương ứng
+    glColor3f(0.0f, 0.0f, 0.0f); // Màu đen cho kim giờ và kim phút
+    drawHourHand(x, y + 0.5f, z + 015, size / 2.2); // Điều chỉnh vị trí của kim giờ
+    drawMinuteHand(x, y+0.5, z+0.3, size / 2.5); // Điều chỉnh vị trí của kim phút
 
-    // Vẽ hình tròn đại diện cho mặt trước của đồng hồ
-    glColor3f(1.0, 1.0, 1.0);
+    glColor3f(1.0f, 0.0f, 0.0f); // Màu đỏ cho kim giây
+    drawSecondHand(x, y+0.5, z+0.3, size / 2.2); // Điều chỉnh vị trí của kim giây
+
+    glPopMatrix();
+}
+
+
+void Clock::updateClock(int value) {
+    // Cập nhật thời gian
+    time_t now;
+    struct tm currentTime;
+    time(&now);
+    localtime_s(&currentTime, &now);
+    hour = currentTime.tm_hour % 12;
+    minute = currentTime.tm_min;
+    second = currentTime.tm_sec;
+
+    glutPostRedisplay(); // Cập nhật lại cửa sổ hiển thị
+}
+
+
+void Clock::drawHourHand(float x, float y, float z, float length) {
+    glPushMatrix();
+    glTranslatef(x, y, z); // Điều chỉnh vị trí của kim giờ
+    glRotatef(-30.0 * hour - (0.5 * minute), 0.0f, 0.0f, 1.0f);
+    glBegin(GL_LINES);
+    glVertex3f(0.0f, 0.0f, 0.0f);
+    glVertex3f(0.0f, length, 0.0f);
+    glEnd();
+    glPopMatrix();
+}
+
+void Clock::drawMinuteHand(float x, float y, float z, float length) {
+    glPushMatrix();
+    glTranslatef(x, y, z); // Điều chỉnh vị trí của kim phút
+    glRotatef(-6.0 * minute - (0.1 * second), 0.0f, 0.0f, 1.0f);
+    glBegin(GL_LINES);
+    glVertex3f(0.0f, 0.0f, 0.0f);
+    glVertex3f(0.0f, length, 0.0f);
+    glEnd();
+    glPopMatrix();
+}
+
+void Clock::drawSecondHand(float x, float y, float z, float length) {
+    glPushMatrix();
+    glTranslatef(x, y, z); // Điều chỉnh vị trí của kim giây
+    glRotatef(-6.0 * second, 0.0f, 0.0f, 1.0f);
+    glColor3f(1.0f, 0.0f, 0.0f);
+    glBegin(GL_LINES);
+    glVertex3f(0.0f, 0.0f, 0.0f);
+    glVertex3f(0.0f, length, 0.0f);
+    glEnd();
+    glPopMatrix();
+}
+
+void Clock::drawCircle(float radius) {
     glBegin(GL_TRIANGLE_FAN);
-    glVertex2f(0.0, 0.0); // Tâm của đồng hồ
+    glVertex2f(0.0f, 0.0f);
     for (int i = 0; i <= 360; i++) {
-        float angle = i * (3.14159265358979323846 / 180.0);
-        float x = 0.9 * cos(angle);
-        float y = 0.9 * sin(angle);
-        glVertex2f(x, y);
+        float angle = 2.0f * M_PI * i / 360.0f;
+        glVertex2f(radius * cos(angle), radius * sin(angle));
     }
     glEnd();
-
-    // Vẽ kim giây
-    glColor3f(1.0, 0.0, 0.0); // Màu đỏ
-    glLineWidth(2.0);
-    glBegin(GL_LINES);
-    glVertex2f(0.0, 0.0);
-    glVertex2f(0.0, 0.7);
-    glEnd();
-
-    // Vẽ kim phút
-    glColor3f(0.0, 1.0, 0.0); // Màu xanh lá cây
-    glLineWidth(3.0);
-    glBegin(GL_LINES);
-    glVertex2f(0.0, 0.0);
-    glVertex2f(0.5 * sin(minutes * 6 * 3.14159 / 180), 0.5 * cos(minutes * 6 * 3.14159 / 180));
-    glEnd();
-
-    // Vẽ kim giờ
-    glColor3f(0.0, 0.0, 1.0); // Màu xanh dương
-    glLineWidth(4.0);
-    glBegin(GL_LINES);
-    glVertex2f(0.0, 0.0);
-    glVertex2f(0.4 * sin((hours * 30 + minutes / 2) * 3.14159 / 180), 0.4 * cos((hours * 30 + minutes / 2) * 3.14159 / 180));
-    glEnd();
-
-    glutSwapBuffers();
 }
 
-void Clock::display() {
-    drawClock();
-}
-
-void Clock::update(int value) {
-    glutPostRedisplay(); // Yêu cầu vẽ lại
-    glutTimerFunc(1000, Clock::update, 0); // Sử dụng Clock::update thay vì update
-}
-
-void Clock::init() {
-    glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // Màu nền đen
-}

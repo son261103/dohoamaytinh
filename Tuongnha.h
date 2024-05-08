@@ -1,6 +1,10 @@
 ﻿#include <string>
+#include <math.h>
+#include <stdlib.h>
 #include "glut.h"
-
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
 class SHAPE {
 public:
 	
@@ -523,6 +527,85 @@ public:
 
 		glEnd();
 	}
+
+	// Hàm vẽ hình tròn tại tọa độ (x, y, z) với bán kính radius
+	void drawCircle(float x, float y, float z, float radius) {
+		int i;
+		int triangleAmount = 100; //# of triangles used to draw circle
+
+		GLfloat twicePi = 2.0f * M_PI;
+
+		glBegin(GL_TRIANGLE_FAN);
+		glVertex3f(x, y, z); // Center of circle
+		for (i = 0; i <= triangleAmount; i++) {
+			glVertex3f(
+				x + (radius * cos(i * twicePi / triangleAmount)),
+				y + (radius * sin(i * twicePi / triangleAmount)),
+				z
+			);
+		}
+		glEnd();
+	}
+
+	// Hàm vẽ thảm
+	void drawRug(float x, float y, float z, float width, float height, float length) {
+		// Màu sắc cho hoa văn
+		GLfloat patternColors[6][3] = {
+			{0.8, 0.6, 0.4}, // Nâu
+			{0.2, 0.6, 0.8}, // Xanh dương
+			{0.6, 0.2, 0.8}, // Tím
+			{0.8, 0.2, 0.6}, // Hồng
+			{0.4, 0.8, 0.2}, // Xanh lá
+			{0.6, 0.8, 0.2}  // Vàng
+		};
+
+		// Vẽ hình hộp chứa thảm
+		glBegin(GL_QUADS);
+		// Mặt dưới của thảm
+		glVertex3f(x, y, z);
+		glVertex3f(x + width, y, z);
+		glVertex3f(x + width, y, z + length);
+		glVertex3f(x, y, z + length);
+		// Mặt trên của thảm
+		glVertex3f(x, y + height, z);
+		glVertex3f(x + width, y + height, z);
+		glVertex3f(x + width, y + height, z + length);
+		glVertex3f(x, y + height, z + length);
+		// Mặt bên của thảm
+		glVertex3f(x, y, z);
+		glVertex3f(x, y, z + length);
+		glVertex3f(x, y + height, z + length);
+		glVertex3f(x, y + height, z);
+		// Mặt bên của thảm
+		glVertex3f(x + width, y, z);
+		glVertex3f(x + width, y, z + length);
+		glVertex3f(x + width, y + height, z + length);
+		glVertex3f(x + width, y + height, z);
+		// Mặt trước của thảm
+		glVertex3f(x, y, z);
+		glVertex3f(x + width, y, z);
+		glVertex3f(x + width, y + height, z);
+		glVertex3f(x, y + height, z);
+		// Mặt sau của thảm
+		glVertex3f(x, y, z + length);
+		glVertex3f(x + width, y, z + length);
+		glVertex3f(x + width, y + height, z + length);
+		glVertex3f(x, y + height, z + length);
+		glEnd();
+
+		// Thêm hoa văn hình tròn
+		float circleRadius = 0.15; // Bán kính của hình tròn
+		float step = 1.0; // Bước giữa các hoa văn
+		for (float i = x + step; i < x + width; i += step) {
+			for (float j = z + step; j < z + length; j += step) {
+				// Chọn màu sắc ngẫu nhiên từ mảng patternColors
+				int colorIndex = rand() % 6;
+				glColor3fv(patternColors[colorIndex]);
+				drawCircle(i, y + 0.01, j, circleRadius);
+			}
+		}
+	}
+
 
 
 	// Biến để theo dõi trạng thái mở hoặc đóng của cửa

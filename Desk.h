@@ -9,7 +9,7 @@ public:
     void drawDesk(float x, float y, float z, float width, float height, float length);
     void drawLeg(float x, float y, float z, float width, float height, float length);
     // Phương thức vẽ ghế gaming có tựa lưng
-    void drawGamingChair(float x, float y, float z, float width, float height, float length);
+    void drawGamingChair(float x, float y, float z, float width, float height, float length, float rotationAngle);
     // Phương thức vẽ desktop
     void drawDesktop(float x, float y, float z, float width, float height, float length);
 
@@ -104,76 +104,96 @@ void DESK::drawLeg(float x, float y, float z, float width, float height, float l
 }
 
 
-void DESK::drawGamingChair(float x, float y, float z, float width, float height, float length) {
+void DESK::drawGamingChair(float x, float y, float z, float width, float height, float length, float rotationAngle) {
     // Đặt màu cho ghế
-    glColor3f(0.0f, 0.0f, 1.0f); // Màu xanh dương
+    glColor3f(0.7f, 0.7f, 0.7f); // Màu xám cho ghế
 
-    // Vẽ tựa lưng của ghế (hình hộp chữ nhật nghiêng)
+    // Vẽ phần chân ghế
     glPushMatrix();
-    glTranslatef(x, y, z);
-    glScalef(width, height, length);
+    glTranslatef(x, y, z); // Điều chỉnh vị trí của ghế
+    glRotatef(rotationAngle, 0.0f, 1.0f, 0.0f); // Xoay ghế theo chiều ngang
     glBegin(GL_QUADS);
-    // Mặt trước
-    glVertex3f(-0.5f, 0.0f, 0.5f);
-    glVertex3f(0.5f, 0.0f, 0.5f);
-    glVertex3f(0.5f, 0.5f, -0.5f);
-    glVertex3f(-0.5f, 0.5f, -0.5f);
-    // Mặt sau
-    glVertex3f(-0.5f, 0.0f, -0.5f);
-    glVertex3f(0.5f, 0.0f, -0.5f);
-    glVertex3f(0.5f, 0.5f, 0.5f);
-    glVertex3f(-0.5f, 0.5f, 0.5f);
-    // Mặt trái
-    glVertex3f(-0.5f, 0.0f, 0.5f);
-    glVertex3f(-0.5f, 0.0f, -0.5f);
-    glVertex3f(-0.5f, 0.5f, -0.5f);
-    glVertex3f(-0.5f, 0.5f, 0.5f);
-    // Mặt phải
-    glVertex3f(0.5f, 0.0f, 0.5f);
-    glVertex3f(0.5f, 0.0f, -0.5f);
-    glVertex3f(0.5f, 0.5f, -0.5f);
-    glVertex3f(0.5f, 0.5f, 0.5f);
+    // Mặt sau của chân ghế
+    glVertex3f(0.0f, 0.0f, 0.0f);
+    glVertex3f(0.1f, 0.0f, 0.0f);
+    glVertex3f(0.1f, 1.7f, 0.0f);
+    glVertex3f(0.0f, 1.7f, 0.0f);
+
+    // Mặt trước của chân ghế
+    glVertex3f(0.0f, 0.0f, 0.8f);
+    glVertex3f(0.1f, 0.0f, 0.8f);
+    glVertex3f(0.1f, 1.7f, 0.8f);
+    glVertex3f(0.0f, 1.7f, 0.8f);
+
+    // Các cạnh của chân ghế
+    glVertex3f(0.0f, 0.0f, 0.0f);
+    glVertex3f(0.0f, 0.0f, 0.8f);
+    glVertex3f(0.0f, 1.7f, 0.8f);
+    glVertex3f(0.0f, 1.7f, 0.0f);
+
+    glVertex3f(0.1f, 0.0f, 0.0f);
+    glVertex3f(0.1f, 0.0f, 0.8f);
+    glVertex3f(0.1f, 1.7f, 0.8f);
+    glVertex3f(0.1f, 1.7f, 0.0f);
     glEnd();
     glPopMatrix();
 
-    // Vẽ phần đệm ngồi của ghế (hình hộp chữ nhật)
+    // Vẽ phần tựa lưng của ghế
     glPushMatrix();
-    glTranslatef(x, y - height, z);
-    glScalef(width, height / 2, length * 2);
+    glTranslatef(x, y, z); // Điều chỉnh vị trí của ghế
+    glRotatef(rotationAngle, 0.0f, 1.0f, 0.0f); // Xoay ghế theo chiều ngang
     glBegin(GL_QUADS);
-    // Mặt trên
-    glVertex3f(-0.5f, 0.5f, 0.5f);
-    glVertex3f(0.5f, 0.5f, 0.5f);
-    glVertex3f(0.5f, 0.5f, -0.5f);
-    glVertex3f(-0.5f, 0.5f, -0.5f);
-    // Mặt dưới
-    glVertex3f(-0.5f, -0.5f, 0.5f);
-    glVertex3f(0.5f, -0.5f, 0.5f);
-    glVertex3f(0.5f, -0.5f, -0.5f);
-    glVertex3f(-0.5f, -0.5f, -0.5f);
-    // Mặt trước
-    glVertex3f(-0.5f, 0.5f, 0.5f);
-    glVertex3f(0.5f, 0.5f, 0.5f);
-    glVertex3f(0.5f, -0.5f, 0.5f);
-    glVertex3f(-0.5f, -0.5f, 0.5f);
-    // Mặt sau
-    glVertex3f(-0.5f, -0.5f, -0.5f);
-    glVertex3f(0.5f, -0.5f, -0.5f);
-    glVertex3f(0.5f, 0.5f, -0.5f);
-    glVertex3f(-0.5f, 0.5f, -0.5f);
-    // Mặt trái
-    glVertex3f(-0.5f, 0.5f, -0.5f);
-    glVertex3f(-0.5f, 0.5f, 0.5f);
-    glVertex3f(-0.5f, -0.5f, 0.5f);
-    glVertex3f(-0.5f, -0.5f, -0.5f);
-    // Mặt phải
-    glVertex3f(0.5f, 0.5f, 0.5f);
-    glVertex3f(0.5f, 0.5f, -0.5f);
-    glVertex3f(0.5f, -0.5f, -0.5f);
-    glVertex3f(0.5f, -0.5f, 0.5f);
+    // Mặt trên của tựa lưng
+    glVertex3f(0.0f, 1.7f, 0.0f);
+    glVertex3f(0.1f, 1.7f, 0.0f);
+    glVertex3f(0.1f, 1.7f, 0.8f);
+    glVertex3f(0.0f, 1.7f, 0.8f);
+
+    // Các cạnh của tựa lưng
+    glVertex3f(0.0f, 1.7f, 0.0f);
+    glVertex3f(0.0f, 1.2f, 0.0f);
+    glVertex3f(0.0f, 1.2f, 0.8f);
+    glVertex3f(0.0f, 1.7f, 0.8f);
+
+    glVertex3f(0.1f, 1.7f, 0.0f);
+    glVertex3f(0.1f, 1.2f, 0.0f);
+    glVertex3f(0.1f, 1.2f, 0.8f);
+    glVertex3f(0.1f, 1.7f, 0.8f);
+
+    glVertex3f(0.0f, 1.7f, 0.8f);
+    glVertex3f(0.0f, 1.2f, 0.8f);
+    glVertex3f(0.1f, 1.2f, 0.8f);
+    glVertex3f(0.1f, 1.7f, 0.8f);
+    glEnd();
+    glPopMatrix();
+
+    // Vẽ phần đệm của ghế
+    glColor3f(0.5f, 0.5f, 0.5f); // Màu xám nhạt cho đệm
+    glPushMatrix();
+    glTranslatef(x, y, z); // Điều chỉnh vị trí của ghế
+    glRotatef(rotationAngle, 0.0f, 1.0f, 0.0f); // Xoay ghế theo chiều ngang
+    glBegin(GL_QUADS);
+    // Mặt trên của đệm
+    glVertex3f(0.0f, 0.7f, 0.0f);
+    glVertex3f(0.8f, 0.7f, 0.0f);
+    glVertex3f(0.8f, 0.7f, 0.8f);
+    glVertex3f(0.0f, 0.7f, 0.8f);
+
+    // Các cạnh của đệm
+    glVertex3f(0.0f, 0.7f, 0.0f);
+    glVertex3f(0.0f, 0.6f, 0.0f);
+    glVertex3f(0.8f, 0.6f, 0.0f);
+    glVertex3f(0.8f, 0.7f, 0.0f);
+
+    glVertex3f(0.0f, 0.7f, 0.8f);
+    glVertex3f(0.0f, 0.6f, 0.8f);
+    glVertex3f(0.8f, 0.6f, 0.8f);
+    glVertex3f(0.8f, 0.7f, 0.8f);
     glEnd();
     glPopMatrix();
 }
+
+
 
 void DESK::drawDesktop(float x, float y, float z, float width, float height, float length) {
     // Đặt màu cho bộ desktop
