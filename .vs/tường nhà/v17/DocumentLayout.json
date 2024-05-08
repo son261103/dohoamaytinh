@@ -1,0 +1,101 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Do_Hoa_May_Tinh\\Downloads_open_GL\\WALL\\WALL\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{EFE9E8BA-EBC6-4C72-9F52-D1FB49AFBE1E}|t\u01B0\u1EDDng nh\u00E0.vcxproj|D:\\Do_Hoa_May_Tinh\\Downloads_open_GL\\WALL\\WALL\\Source.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{EFE9E8BA-EBC6-4C72-9F52-D1FB49AFBE1E}|t\u01B0\u1EDDng nh\u00E0.vcxproj|solutionrelative:Source.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EFE9E8BA-EBC6-4C72-9F52-D1FB49AFBE1E}|t\u01B0\u1EDDng nh\u00E0.vcxproj|D:\\Do_Hoa_May_Tinh\\Downloads_open_GL\\WALL\\WALL\\Tuongnha.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{EFE9E8BA-EBC6-4C72-9F52-D1FB49AFBE1E}|t\u01B0\u1EDDng nh\u00E0.vcxproj|solutionrelative:Tuongnha.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EFE9E8BA-EBC6-4C72-9F52-D1FB49AFBE1E}|t\u01B0\u1EDDng nh\u00E0.vcxproj|D:\\Do_Hoa_May_Tinh\\Downloads_open_GL\\WALL\\WALL\\bed.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{EFE9E8BA-EBC6-4C72-9F52-D1FB49AFBE1E}|t\u01B0\u1EDDng nh\u00E0.vcxproj|solutionrelative:bed.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EFE9E8BA-EBC6-4C72-9F52-D1FB49AFBE1E}|t\u01B0\u1EDDng nh\u00E0.vcxproj|D:\\Do_Hoa_May_Tinh\\Downloads_open_GL\\WALL\\WALL\\Clock.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{EFE9E8BA-EBC6-4C72-9F52-D1FB49AFBE1E}|t\u01B0\u1EDDng nh\u00E0.vcxproj|solutionrelative:Clock.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EFE9E8BA-EBC6-4C72-9F52-D1FB49AFBE1E}|t\u01B0\u1EDDng nh\u00E0.vcxproj|D:\\Do_Hoa_May_Tinh\\Downloads_open_GL\\WALL\\WALL\\Desk.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{EFE9E8BA-EBC6-4C72-9F52-D1FB49AFBE1E}|t\u01B0\u1EDDng nh\u00E0.vcxproj|solutionrelative:Desk.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Clock.h",
+              "DocumentMoniker": "D:\\Do_Hoa_May_Tinh\\Downloads_open_GL\\WALL\\WALL\\Clock.h",
+              "RelativeDocumentMoniker": "Clock.h",
+              "ToolTip": "D:\\Do_Hoa_May_Tinh\\Downloads_open_GL\\WALL\\WALL\\Clock.h",
+              "RelativeToolTip": "Clock.h",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAmwBYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-04-29T18:45:14.737Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Desk.h",
+              "DocumentMoniker": "D:\\Do_Hoa_May_Tinh\\Downloads_open_GL\\WALL\\WALL\\Desk.h",
+              "RelativeDocumentMoniker": "Desk.h",
+              "ToolTip": "D:\\Do_Hoa_May_Tinh\\Downloads_open_GL\\WALL\\WALL\\Desk.h",
+              "RelativeToolTip": "Desk.h",
+              "ViewState": "AQIAAFAAAAAAAAAAAAAmwBgBAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-04-27T16:59:32.816Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "bed.h",
+              "DocumentMoniker": "D:\\Do_Hoa_May_Tinh\\Downloads_open_GL\\WALL\\WALL\\bed.h",
+              "RelativeDocumentMoniker": "bed.h",
+              "ToolTip": "D:\\Do_Hoa_May_Tinh\\Downloads_open_GL\\WALL\\WALL\\bed.h",
+              "RelativeToolTip": "bed.h",
+              "ViewState": "AQIAAE4AAAAAAAAAAAAAABAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-04-27T16:22:38.294Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Source.cpp",
+              "DocumentMoniker": "D:\\Do_Hoa_May_Tinh\\Downloads_open_GL\\WALL\\WALL\\Source.cpp",
+              "RelativeDocumentMoniker": "Source.cpp",
+              "ToolTip": "D:\\Do_Hoa_May_Tinh\\Downloads_open_GL\\WALL\\WALL\\Source.cpp",
+              "RelativeToolTip": "Source.cpp",
+              "ViewState": "AQIAAK4AAAAAAAAAAAAAAIoAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-04-27T16:05:12.812Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Tuongnha.h",
+              "DocumentMoniker": "D:\\Do_Hoa_May_Tinh\\Downloads_open_GL\\WALL\\WALL\\Tuongnha.h",
+              "RelativeDocumentMoniker": "Tuongnha.h",
+              "ToolTip": "D:\\Do_Hoa_May_Tinh\\Downloads_open_GL\\WALL\\WALL\\Tuongnha.h",
+              "RelativeToolTip": "Tuongnha.h",
+              "ViewState": "AQIAAOgBAAAAAAAAAAAmwA0CAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-04-27T16:05:12.897Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
